@@ -8,22 +8,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-/* Layout: navy command bar, then scope-limited pages. Minister: all agencies. Agency head: own agency. Supervisor: own unit. */
+/* White page. Johor flag red and blue are used only on the rule, mark, links, and chart. */
 :root{
-  --bg:#eef1f6; --surface:#ffffff; --surface2:#f5f7fb; --ink:#0c1a38; --ink2:#45516c; --muted:#76829a; --line:#dce2ed;
-  --accent:#17338a; --accent-ink:#ffffff; --gold:#e2b04a; --head-bg:#0a1a45; --head-ink:#ffffff;
-  --good:#1f8a4c; --warn:#c48a06; --high:#d4621d; --crit:#c62b2b;
+  --bg:#ffffff; --surface:#ffffff; --surface2:#f3f6fb; --ink:#1a2744; --ink2:#4a5670; --muted:#7a8498; --line:#e4e9f2;
+  --accent:#1a3a8c; --accent-ink:#ffffff; --red:#c8102e; --head-bg:#ffffff; --head-ink:#1a2744;
+  --good:#1f8a4c; --warn:#c48a06; --high:#d4621d; --crit:#c8102e;
   --f-body:'Barlow','Segoe UI',system-ui,-apple-system,sans-serif;
   --f-disp:'Barlow Condensed','Barlow','Arial Narrow',sans-serif;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#080f22; --surface:#111b36; --surface2:#16224a; --ink:#e8edf8; --ink2:#a9b5d0; --muted:#8793b0; --line:#24325c;
-  --accent:#86a8ff; --accent-ink:#08122e; --gold:#e2b04a; --head-bg:#0b1431; --head-ink:#ffffff;
-  --good:#43c07a; --warn:#e5b43a; --high:#f08a4b; --crit:#f26b6b; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#080f22; --surface:#111b36; --surface2:#16224a; --ink:#e8edf8; --ink2:#a9b5d0; --muted:#8793b0; --line:#24325c;
-  --accent:#86a8ff; --accent-ink:#08122e; --gold:#e2b04a; --head-bg:#0b1431; --head-ink:#ffffff;
-  --good:#43c07a; --warn:#e5b43a; --high:#f08a4b; --crit:#f26b6b; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45;margin:0;font-variant-numeric:tabular-nums}
@@ -37,16 +30,16 @@ h2{font-size:21px;line-height:1.1}
 .mono{font-feature-settings:"tnum";letter-spacing:.02em}
 
 /* command bar */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--head-bg);color:var(--head-ink);border-bottom:3px solid var(--gold)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--head-bg);color:var(--head-ink);border-bottom:2px solid var(--red);box-shadow:0 1px 0 var(--accent)}
 .top .in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
 .brand svg{flex:none}
-.brand b{font-family:var(--f-disp);font-size:26px;letter-spacing:.06em;color:var(--gold);line-height:1;display:block}
+.brand b{font-family:var(--f-disp);font-size:26px;letter-spacing:.06em;color:var(--accent);line-height:1;display:block}
 .brand span{font-size:12px;opacity:.8;display:block;line-height:1.2}
 .who{display:flex;align-items:center;gap:10px;min-width:0}
 .who .role{font-size:13px;opacity:.9;text-align:right;min-width:0}
-.btn{background:transparent;border:1px solid color-mix(in srgb,var(--head-ink) 40%,transparent);color:var(--head-ink);border-radius:6px;padding:6px 12px;font-size:13px}
-.btn:hover{background:color-mix(in srgb,var(--head-ink) 12%,transparent)}
+.btn{background:transparent;border:1px solid color-mix(in srgb,var(--accent) 45%,var(--line));color:var(--accent);border-radius:6px;padding:6px 12px;font-size:13px}
+.btn:hover{background:color-mix(in srgb,var(--accent) 8%,var(--surface))}
 
 main{padding-block:22px 48px}
 .crumbs{display:flex;gap:6px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin-bottom:8px;align-items:center}
@@ -159,16 +152,16 @@ tbody tr:hover td{background:var(--surface2)}
 
 /* sign-in */
 .login{min-height:100vh}
-.login .hero{background:var(--head-bg);color:var(--head-ink);border-bottom:3px solid var(--gold)}
+.login .hero{background:var(--head-bg);color:var(--head-ink);border-bottom:2px solid var(--red);box-shadow:0 1px 0 var(--accent)}
 .login .hero .in{padding-block:34px 30px}
-.login .hero h1{color:var(--gold);font-size:46px;letter-spacing:.05em}
+.login .hero h1{color:var(--accent);font-size:46px;letter-spacing:.05em}
 .login .hero p{margin:8px 0 0;max-width:58ch;opacity:.9}
 .login .body{padding-block:24px 48px}
 .lg{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));margin-top:8px}
 .acct{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;text-align:left;display:flex;flex-direction:column;gap:2px;min-width:0}
 .acct:hover{border-color:var(--accent)}
 .acct b{font-size:15px}.acct span{font-size:13px;color:var(--ink2)}
-.acct.big{border-color:var(--accent)}
+.acct.big{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--red)}
 .selrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 select{font:inherit;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:8px 10px;min-width:0;max-width:100%;flex:1 1 260px}
 .go{background:var(--accent);color:var(--accent-ink);border:0;border-radius:6px;padding:8px 16px;font-weight:600}
@@ -271,7 +264,7 @@ var METRICS={
   alerts:{label:'High-risk alerts',good:'down',dec:0,key:'alerts',unit:''}
 };
 var I={
-  shield:'<svg width="30" height="34" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 2 3 6.5v9.2c0 8 5.2 14.2 12 16.3 6.8-2.100 12-8.300 12-16.300V6.500L15 2Z" fill="none" stroke="#e2b04a" stroke-width="2"/><path d="M15 10v11M9.500 15.500h11" stroke="#e2b04a" stroke-width="2.400" stroke-linecap="round"/></svg>',
+  shield:'<svg width="30" height="34" viewBox="0 0 30 34" aria-hidden="true"><path d="M15 2 3 6.5v9.2c0 8 5.2 14.2 12 16.3 6.8-2.100 12-8.300 12-16.300V6.500L15 2Z" fill="none" stroke="#c8102e" stroke-width="2"/><path d="M15 10v11M9.500 15.500h11" stroke="#c8102e" stroke-width="2.400" stroke-linecap="round"/></svg>',
   lock:'<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="5.500" width="8" height="5.500" rx="1" fill="currentColor"/><path d="M4 5.500V4a2 2 0 0 1 4 0v1.500" fill="none" stroke="currentColor" stroke-width="1.300"/></svg>',
   eye:'<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8s2.500-4.500 7-4.500S15 8 15 8s-2.500 4.500-7 4.500S1 8 1 8Z" fill="none" stroke="currentColor" stroke-width="1.500"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg>',
   warn:'<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M9 2 1.500 15.500h15L9 2Z" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linejoin="round"/><path d="M9 7v4M9 12.800v.1" stroke="currentColor" stroke-width="1.800" stroke-linecap="round"/></svg>'
